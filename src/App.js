@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import {uid} from 'uid';
+
+import Select, { prepareOptions } from './Select';
+
+const mockedData = [
+  {
+    id: uid(),
+    value: "Susan",
+    label: "Susan",
+    children: [
+      {
+        id: uid(),
+        value: "Susan inner",
+        label: "Susan inner",
+        children: [
+          {
+            id: uid(),
+            value: "Susan more deeper 1",
+            label: "Susan more deeper 1",
+          }, 
+          {
+            id: uid(),
+            value: "Susan more deeper 2",
+            label: "Susan more deeper 2",
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: uid(),
+    value: "Rahul",
+    label: "Rahul",
+  },
+  {
+    id: uid(),
+    value: "Kamla",
+    label: "Kamla",
+  },
+];
 
 function App() {
+  const preparedData = prepareOptions(mockedData);
+  console.log(preparedData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Select options={preparedData} />
   );
 }
 
