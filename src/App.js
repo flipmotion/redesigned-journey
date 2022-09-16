@@ -41,7 +41,6 @@ const mockedData = [
 
 function App() {
   const preparedData = prepareOptions(mockedData);
-  console.log(preparedData);
 
   return (
     <Select options={preparedData} />

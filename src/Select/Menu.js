@@ -12,35 +12,32 @@ export const SelectDropDownMenu = ({
   searchText,
   onClose,
   onChange,
-}) => {
-  console.log(anchorEl);
-  return (
-    <Menu
-      keepMounted
-      anchorEl={anchorEl}
-      open={isOpen}
-      onClose={onClose}
-    >
-      <SelectSearchBar
-        onChange={onChange}
-        value={searchText}
-      />
-      {options.map(({ label, value, depth }) => {
-        return (
-          <Styled.SelectMenuItem
-            key={value}
-            onClick={onClose}
-            disableTouchRipple
-            selected={selectedItem === label}
-            depth={depth}
-          >
-            {label}
-          </Styled.SelectMenuItem>
-        );
-      })}
-    </Menu>
-  );
-}
+}) => (
+  <Menu
+    keepMounted
+    anchorEl={anchorEl}
+    open={isOpen}
+    onClose={onClose}
+  >
+    <SelectSearchBar
+      onChange={onChange}
+      value={searchText}
+    />
+    {options.map(({ label, value, depth }) => {
+      return (
+        <Styled.SelectMenuItem
+          key={value}
+          onClick={onClose}
+          disableTouchRipple
+          selected={selectedItem === label}
+          depth={depth}
+        >
+          {label}
+        </Styled.SelectMenuItem>
+      );
+    })}
+  </Menu>
+);
 
 SelectDropDownMenu.propTypes = {
   options: array.isRequired,
